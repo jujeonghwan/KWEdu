@@ -1,0 +1,230 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="search_au_usestate" name="search_au_usestate" value="{search_au_usestate}">
+<input type="hidden" id="search_type" name="search_type" value="{search_type}">
+<input type="hidden" id="search_keyword" name="search_keyword" value="{search_keyword}">
+<input type="hidden" id="page" name="page" value="{page}">
+<!-- 목록 페이지 관련 -->
+<!-- 중복실행 확인 -->
+<input type="hidden" id="duplication_tag" name="duplication_tag" value="N" />
+<!-- 중복실행 확인 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">관리자</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이름</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="au_name" name="au_name" maxlength="50" />
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">아이디</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-sm" id="au_loginid" name="au_loginid" maxlength="20" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">비밀번호</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    <input type="password" class="form-control input-sm" id="au_password" name="au_password" maxlength="20" />
+                </div>   
+            </div>
+            <div class="row form-group">         
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">비밀번호 확인</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    <input type="password" class="form-control input-sm" id="au_password_confirm" name="au_password_confirm" maxlength="20" />
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이메일</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    <input type="email" class="form-control input-sm" id="au_email" name="au_email" maxlength="50" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">휴대폰</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="au_mobile" name="au_mobile" maxlength="20" />
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    {radio_au_usestate}
+                </div>
+            </div>            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <input type="button" class="btn btn-primary" id="button_go_insert_process" value="등록완료" />
+        </div>
+        <div class="col-md-4 text-right"></div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    // 페이지 로드시 포커스
+    $("#au_name").focus();   
+    
+    // 등록완료 버튼 클릭
+    $("#button_go_insert_process").on("click", function() {
+        go_insert_process();
+    });     
+});
+ 
+// 등록완료
+function go_insert_process() {
+    if ($.trim($("#au_name").val()) == "") {
+        alert("이름을 입력하세요.");
+        $("#au_name").focus();
+        return;
+    }
+
+    // 이름이중복체크
+    $.ajax({   
+        type: "post",
+        async: false,                   // 동기 방식
+        url: "ajax_user_au_name_duplication_check.php",        
+        data: {
+            au_name: $.trim($("#au_name").val())
+        },       
+        success: function(data) {
+            if (data == "Y") {
+                duplication_tag = "Y";
+            }
+            else {
+                duplication_tag = "N";  
+            }
+        }  
+    }); 
+    
+    if (duplication_tag == "Y") {
+        alert("이름이 중복되었습니다.");
+        $("#au_name").focus();
+        return;
+    }
+    
+    if ($.trim($("#au_loginid").val()) == "") {
+        alert("아이디를 입력하세요.");
+        $("#au_loginid").focus();
+        return;
+    }
+    if (!check_lowercase_number($.trim($("#au_loginid").val()))) {
+        alert("아이디를 영문소문자/숫자로 입력하세요.");
+        $("#au_loginid").focus();
+        return;    
+    }
+    if (!check_string_length($.trim($("#au_loginid").val()), 2, 20)) {
+        alert("아이디를 2자 이상 20자 이하로 입력하세요.");
+        $("#au_loginid").focus();
+        return;    
+    }
+    
+    // 아이디 중복체크
+    $.ajax({   
+        type: "post",
+        async: false,                   // 동기 방식
+        url: "ajax_user_au_loginid_duplication_check.php",        
+        data: {
+            au_loginid: $.trim($("#au_loginid").val())
+        },       
+        success: function(data) {
+            if (data == "Y") {
+                duplication_tag = "Y";
+            }
+            else {
+                duplication_tag = "N";  
+            }
+        }  
+    }); 
+    
+    if (duplication_tag == "Y") {
+        alert("아이디가 중복되었습니다.");
+        $("#au_loginid").focus();
+        return;
+    }
+    
+    if ($.trim($("#au_password").val()) == "") {
+        alert("비밀번호를 입력하세요.");
+        $("#au_password").focus();
+        return;
+    }
+    if (!check_string_length($.trim($("#au_password").val()), 4, 20)) {
+        alert("비밀번호를 4자 이상 20자 이하로 입력하세요.");
+        $("#au_password").focus();
+        return;    
+    }
+    
+    if ($.trim($("#au_password_confirm").val()) != $.trim($("#au_password").val())) {
+        alert("비밀번호 확인을 비밀번호와 같게 입력하세요.");
+        $("#au_password_confirm").focus();
+        return;
+    }
+    
+    if ($.trim($("#au_email").val()) == "") {
+        alert("이메일을 입력하세요.");
+        $("#au_email").focus();
+        return;
+    }
+    
+    if ($.trim($("#au_mobile").val()) == "") {
+        alert("휴대폰을 입력하세요.");
+        $("#au_mobile").focus();
+        return;
+    }
+    
+    if ($('input:radio[name="au_usestate"]').is(":checked") == false) {
+        alert("사용상태를 선택하세요.");
+        $('input:radio[name="au_usestate"]').first().focus();
+        return;
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "adminuser_insert_process.php");    
+    $("#form_main").submit();
+}
+
+</script>

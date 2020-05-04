@@ -1,0 +1,150 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="search_u_usestate" name="search_u_usestate" value="{search_u_usestate}">
+<input type="hidden" id="search_type" name="search_type" value="{search_type}">
+<input type="hidden" id="search_keyword" name="search_keyword" value="{search_keyword}">
+<input type="hidden" id="page" name="page" value="{page}">
+<!-- 목록 페이지 관련 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">사용자</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이름(한글)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_name}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">First Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_firstname}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Last Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_lastname}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Preferred Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_preferredname}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">아이디</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_loginid}
+                </div>
+                <!--
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">비밀번호</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_password}
+                </div>
+                -->
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">생년월일</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_birthdate}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">성별(Gender)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span style="color:{color_u_gendertype}">{u_gendertype}</span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이메일</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_email}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">출생국가(Country of Birth)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_contryofbirth}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">국적(Country of Citizenship)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_contryofcitizenship}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">여권번호(Passport Number)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_passportnumber}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span style="color:{color_u_usestate}">{u_usestate}</span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">로그인일시</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {u_logindatetime}
+                </div>
+            </div>        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a class="btn btn-primary" href="{update_link_href}" role="button">수정하기</a>
+        </div>
+        <div class="col-md-4 text-right"></div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    
+});
+
+</script>

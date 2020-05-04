@@ -1,0 +1,145 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">대메뉴</label></span>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control input-sm" id="search_m_id_1" name="search_m_id_1">{option_search_m_id_1}</select>
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</label></span>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control input-sm" id="search_m_usestate" name="search_m_usestate">{option_search_m_usestate}</select>
+                </div>                
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 text-left"></div>
+        <div class="col-md-4 text-center">
+            <input type="button" class="btn btn-primary" id="button_go_list" value="목록조회" />
+        </div>
+        <div class="col-md-4 text-right">
+            <a class="btn btn-info" href="{insert_link_href}" role="button">등록하기</a>
+        </div> 
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            총 {total_rows}
+        </div> 
+    </div>
+    
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <colgroup>
+            <col width="50px" />
+            
+            <col width="" />
+            <col width="" />
+            <col width="" />
+            
+            <col width="" />
+            <col width="" />
+            <col width="" />
+            
+            <col width="" />
+            <col width="" />
+            <col width="" />
+            <col width="" />
+        </colgroup>
+        
+        <thead>
+            <tr class="success">
+                <th class="text-center" rowspan="2">NO</th>
+                
+                <th class="text-center" colspan="3">대메뉴</th>
+                <th class="text-center" colspan="3">중메뉴</th>
+                <th class="text-center" colspan="4">소메뉴</th>
+            </tr>
+            <tr class="success">
+                <th class="text-center">메뉴명</th>
+                <th class="text-center">사용상태</th>
+                <th class="text-center">순서</th>
+                
+                <th class="text-center">메뉴명</th>
+                <th class="text-center">사용상태</th>
+                <th class="text-center">순서</th>
+                
+                <th class="text-center">메뉴명</th>                
+                <th class="text-center">사용상태</th>
+                <th class="text-center">순서</th>
+                <th class="text-center">메뉴URL</th>
+            </tr>
+        </thead>
+            
+        <tbody>
+            <!-- LOOP START row -->
+            <tr>
+                <td class="text-center">{no}</td>
+                
+                <td><a href="{view_link_href_1}">{m_name_1}</a></td>
+                <td class="text-center"><span style="color:{color_m_usestate_1}">{m_usestate_1}</span></td>
+                <td class="text-center">{button_order_change_1}<!--<a class="btn btn-default btn-sm" href="{order_change_link_href_1}" role="button"> ▲ </a>--></td>
+                
+                <td><a href="{view_link_href_2}">{m_name_2}</a></td>
+                <td class="text-center"><span style="color:{color_m_usestate_2}">{m_usestate_2}</span></td>
+                <td class="text-center">{button_order_change_2}</td>
+                
+                <td><a href="{view_link_href_3}">{m_name_3}</a></td>                
+                <td class="text-center"><span style="color:{color_m_usestate_3}">{m_usestate_3}</span></td>
+                <td class="text-center">{button_order_change_3}</td>
+                <td>{m_url_3}</td>
+            </tr>
+            <!-- LOOP END row -->
+        </tbody>
+    </table>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    // 페이지 로드시 포커스
+    $("#button_go_list").focus();   
+
+    // 목록조회 버튼 클릭
+    $("#button_go_list").on("click", function() {
+        go_list();
+    });
+});
+
+// Query string 구하기
+function get_list_querystring() {
+    var list_querystring = "";
+    
+    list_querystring += "&search_m_id_1=" + $.trim($("#search_m_id_1").val());
+    list_querystring += "&search_m_usestate=" + $.trim($("#search_m_usestate").val());
+ 
+    return list_querystring;
+}
+    
+// 목록조회
+function go_list() {
+    var list_querystring = get_list_querystring();
+    
+    var location_href = "";
+    location_href += "menu_list.php?dummy=dummy";
+    location_href += list_querystring;
+    
+    $(location).attr("href", location_href);
+}
+
+</script>

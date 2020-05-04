@@ -1,0 +1,145 @@
+<?php
+require_once ($_SERVER["DOCUMENT_ROOT"] . "/common/global/global.inc.php");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KW Edu Consulting Web Site Project URL List</title>
+    <style>
+        /* Html Element */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 20px auto;
+            width: 800px;
+        }
+
+        h1 {
+            margin: 10px 0;            
+            color: brown;
+        }
+
+        h2 {
+            margin: 10px 0;            
+            color: blue;
+        }
+
+        table {
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: 1px solid gray;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>KW Edu Consulting Web Site Project URL List</h1>
+    
+    <h2>1.공통</h2>
+    <table>
+        <tr>
+            <th>항목</th>
+            <th>URL</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td>Flattern (Bootstrap Thema)</td>
+            <td><a href="/common/theme/Flattern/" alt="Flattern (Bootstrap Thema)" target="_new">/common/theme/Flattern/</a></td>
+            <td>부트스트랩 웹페이지 템플릿 (현재 디자인)</td>            
+        </tr>
+        <!--
+        <tr>
+            <td>Serenity (Bootstrap Thema)</td>
+            <td><a href="/common/theme/Serenity/" alt="phpMyAdmin" target="_new">/common/theme/Serenity/</a></td>
+            <td>부트스트랩 웹페이지 템플릿</td>
+        </tr>
+        -->
+        <tr>
+            <td>phpMyAdmin</td>            
+            <td><a href="http://www.wst.kr/phpMyAdmin-4.0.10.9/" alt="phpMyAdmin" target="_new">phpMyAdmin</a></td>
+            <td>Database(DB) 관리 Tool</td>
+        </tr>
+        <tr>
+            <td>PHP Info</td>            
+            <td><a href="/zzz/phpinfo.php" alt="PHP Info" target="_new">/zzz/phpinfo.php</a></td>
+            <td>PHP 설치 정보 및 관련 정보</td>
+        </tr>
+        
+    </table>
+
+    <h2>2.관리자</h2>
+    <table>
+        <tr>
+            <th>Depth 1</th>
+            <th>Depth 2</th>
+            <th>URL</th>
+            <th>비고</th>            
+        </tr>
+        <tr>
+            <td>관리자</td>
+            <td>관리자 Admin</td>
+            <td><a href="/admin/" target="_new">/admin/</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>담당자</td>
+            <td>담당자 Admin</td>
+            <td><a href="/worker/" target="_new">/worker/</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h2>3.사용자</h2>
+    <table>
+        <tr>
+            <th>Depth 1</th>
+            <th>Depth 2</th>
+            <th>URL</th>
+            <th>비고</th>            
+        </tr>
+<?php
+foreach ($USER_MENU_ARRAY as $key => $val) {
+    $menu_name_1 = $key;                // 상위 메뉴명
+    $menu_2_array = $val;
+
+    foreach ($menu_2_array as $key2 => $val2) {
+        $menu_name_2 = $key2;       // 하위 메뉴명  
+        $menu_url_2 = $val2;        // 하위 메뉴명
+?>
+        <tr>
+            <td><?php echo $menu_name_1;?></td>
+            <td><?php echo $menu_name_2;?></td>
+            <td><a href="<?php echo $menu_url_2;?>" alt="<?php echo $menu_name_2;?>" target="_new"><?php echo $menu_url_2;?></a></td>
+            <td></td>
+        </tr>
+<?php
+    } // foreach ($menu_2_array as $key2 => $val2)
+} // foreach ($USER_MENU_ARRAY as $key => $val)
+?>     
+<!--
+        <tr>
+            <td>1.회사소개</td>
+            <td>캐나다</td>
+            <td><a href="/company/canada.php" alt="캐나다" target="_new">/company/canada.php</a></td>
+            <td></td>
+        </tr>
+-->
+    </table>
+</body>
+</html>

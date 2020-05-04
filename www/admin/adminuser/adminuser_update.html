@@ -1,0 +1,197 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="search_au_usestate" name="search_au_usestate" value="{search_au_usestate}">
+<input type="hidden" id="search_type" name="search_type" value="{search_type}">
+<input type="hidden" id="search_keyword" name="search_keyword" value="{search_keyword}">
+<input type="hidden" id="page" name="page" value="{page}">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="au_id" name="au_id" value="{au_id}">
+<!-- 중복실행 확인 -->
+<input type="hidden" id="duplication_tag" name="duplication_tag" value="N" />
+<!-- 중복실행 확인 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">관리자</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이름</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {au_name}
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">아이디</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {au_loginid}
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이메일</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    <input type="email" class="form-control input-sm" id="au_email" name="au_email" value="{au_email}" maxlength="50" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">휴대폰</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="au_mobile" name="au_mobile" value="{au_mobile}" maxlength="20" />
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {radio_au_usestate}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">로그인일시</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {au_logindatetime}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-success">
+        <div class="panel-heading">관리자 메뉴권한</div>
+        <div class="panel-body">            
+            <table class="table table-bordered table-condensed table-hover table-striped">
+                <colgroup>
+                    <col width="50px" />                    
+                    <col width="150px" />
+                    <col width="180px" />
+                    <col width="" />
+                </colgroup>
+                
+                <thead>
+                    <tr class="success">
+                        <th class="text-center">NO</th>                        
+                        <th class="text-center">대메뉴</th>
+                        <th class="text-center">중메뉴</th>
+                        <th class="text-center">소메뉴</th>
+                    </tr>
+                </thead>
+                    
+                <tbody>
+                    <!-- LOOP START row_adminusermenuauth -->
+                    <tr>
+                        <td class="text-center">{no}</td>                        
+                        <td>{m_name_1}</td>
+                        <td>{m_name_2}</td>
+                        <td>{checkbox_auma_menu_list}</td>
+                    </tr>
+                    <!-- LOOP END row_adminusermenuauth -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <input type="button" class="btn btn-primary" id="button_go_update_process" value="수정완료" />
+        </div>
+        <div class="col-md-4 text-right">
+            <input type="button" class="btn btn-danger" id="button_go_delete_process" value="삭제하기" />
+        </div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    // 페이지 로드시 포커스
+    $("#au_email").focus();   
+    
+    // 수정완료 버튼 클릭
+    $("#button_go_update_process").on("click", function() {
+        go_update_process();
+    });
+    
+    // 삭제하기 버튼 클릭
+    $("#button_go_delete_process").on("click", function() {
+        go_delete_process();
+    });      
+});
+ 
+// 수정완료
+function go_update_process() {            
+    if ($.trim($("#au_email").val()) == "") {
+        alert("이메일을 입력하세요.");
+        $("#au_email").focus();
+        return;
+    }
+    
+    if ($.trim($("#au_mobile").val()) == "") {
+        alert("휴대폰을 입력하세요.");
+        $("#au_mobile").focus();
+        return;
+    }
+    
+    if ($('input:radio[name="au_usestate"]').is(":checked") == false) {
+        alert("사용상태를 선택하세요.");
+        $('input:radio[name="au_usestate"]').first().focus();
+        return;
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "adminuser_update_process.php");    
+    $("#form_main").submit();
+}
+
+// 삭제하기
+function go_delete_process() {        
+    if (!confirm("삭제하시겠습니까?")) {
+        return;
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "adminuser_delete_process.php");    
+    $("#form_main").submit();
+}
+
+</script>

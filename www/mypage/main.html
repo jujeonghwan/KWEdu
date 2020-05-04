@@ -1,0 +1,116 @@
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="row form-group">    
+        <!-- 왼쪽 -->            
+        <div class="col-md-6">
+            <!-- 왼쪽 시작 -->
+            <div class="panel panel-success">
+                <div class="panel-heading">왼쪽</div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-condensed table-hover table-striped">
+                        <colgroup>
+                            <col width="50%" />
+                            <col width="50%" />
+                        </colgroup>
+                        
+                        <tbody>
+                            <tr>
+                                <th class="success text-center">제목</th>
+                                <td class="text-center">내용</td>                        
+                            </tr>
+                            <tr>
+                                <th class="success text-center">제목2</th>
+                                <td class="text-center">내용2</td>                        
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a class="btn btn-info" href="/admin/aaa.php" role="button"> 메뉴가기</a>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            <!-- 왼쪽 끝 -->
+        </div>
+        <!-- 왼쪽 -->
+        
+        <!-- 오른쪽 -->
+        <div class="col-md-6">
+            <!-- 오른쪽 시작 -->
+            <div class="panel panel-success">
+                <div class="panel-heading">오른쪽</div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-condensed table-hover table-striped">
+                        <colgroup>
+                            <col width="50px" />
+                            <col width="" />
+                            <col width="150px" />            
+                            <col width="80px" />
+                        </colgroup>
+                        
+                        <thead>
+                            <tr class="success">
+                                <th class="text-center">NO</th>
+                                <th class="text-center">오른쪽</th>
+                                <th class="text-center">오른쪽주소</th>                
+                                <th class="text-center">사용상태</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <!-- LOOP START row_allowaccessip -->
+                            <tr>
+                                <td class="text-center">{no}</td>
+                                <td>{aai_name}</td>
+                                <td class="text-center">{aai_ipaddress}</td>
+                                <td class="text-center"><span style="color:{color_aai_usestate}">{aai_usestate}</span></td>
+                            </tr>
+                            <!-- LOOP END row_allowaccessip -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a class="btn btn-info" href="/admin/allowaccessip_list.php" role="button">오른쪽 메뉴가기</a>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            <!-- 오른쪽 끝 -->
+        </div>
+        <!-- 오른쪽 -->
+    </div>
+
+
+    <!-- 메뉴바로가기 시작 -->
+    <div class="panel panel-success">
+        <div class="panel-heading">메뉴바로가기</div>
+        <div class="panel-body">
+            
+            <!-- LOOP START row_menu -->
+            <div class="row form-group">                
+                <div class="col-md-3 text-left">
+                    <span class="col-md-12 badge"><label class="control-label">{m_name_1}</label></span>
+                    <br />&nbsp;
+                </div>
+                <div class="col-md-9 text-left">
+                    <!-- LOOP START row_menu_sub -->
+                    <div class="col-md-4 text-left">
+                        <a href="{m_url_3}">{m_name_2}</a>
+                        <br />&nbsp;
+                    </div>
+                    <!-- LOOP END row_menu_sub -->
+                </div>
+            </div>
+            <!-- LOOP END row_menu -->
+        </div>
+    </div>
+    <!-- 메뉴바로가기 끝 -->
+    
+</div><!-- /container -->

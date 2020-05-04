@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <!-- css -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="/common/theme/Flattern/css/bootstrap.css" rel="stylesheet" />
+  <link href="/common/theme/Flattern/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="/common/theme/Flattern/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="/common/theme/Flattern/css/jcarousel.css" rel="stylesheet" />
+  <link href="/common/theme/Flattern/css/flexslider.css" rel="stylesheet" />
+  <link href="/common/theme/Flattern/css/style.css" rel="stylesheet" />
+  <!-- Theme skin (blue.css default.css green.css kissme.css lime.css pink.css red.css rose.css sand.css yellow.css) -->
+  <link href="/common/theme/Flattern/skins/blue.css" rel="stylesheet" />
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="/images/ico/favicon.png" />
+
+  <!-- =======================================================
+    Theme Name: Flattern
+    Theme URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+
+
+  <!-- Bootstrap core JavaScript -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  
+  <!--[if lt IE 9]>
+  <script src="/common/jquery/jquery-1.12.1.min.js"></script>
+  <![endif]-->
+  <!--[if gte IE 9]><!-->
+  <script src="/common/jquery/jquery-2.2.1.min.js"></script>
+  <!--<![endif]-->
+
+
+  <!-- http://momentjs.com/ -->
+  <!--<script src="/common/moment/moment.min.js"></script>-->
+  <script src="/common/moment/moment-with-locales.min.js"></script>
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+  <!-- Custom JavaScript -->
+  <script src="/common/js/common.js"></script>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- toggle top area -->
+    <div class="hidden-top">
+      <div class="hidden-top-inner container">
+        <div class="row">
+          <div class="span12">
+            <ul>
+              <li><strong>{title}</strong></li>
+              <li>카카오톡ID: {kakaotalk}</li>
+              <li><i class="icon-envelope-alt"></i> {email}</li>
+              <li><i class="icon-phone"></i> {tel}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end toggle top area -->
+    <!-- start header -->
+    <header>
+      <div class="container ">
+        <!-- hidden top area toggle link -->
+        <div id="header-hidden-link">
+          <a href="#" class="toggle-link" title="Click [Contact Info]" data-target=".hidden-top"><i></i>Open</a>
+        </div>
+        <!-- end toggle link -->
+        <div class="row nomargin">
+          <div class="span12">
+            <div class="headnav">
+              <ul>
+                {header_logout_status_begin}
+                <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> 회원 가입</a></li>
+                <li><a href="#mySignin" data-toggle="modal">로그인</a></li>
+                {header_logout_status_end}
+
+                <!--<li><a href="#myInfo" data-toggle="modal"><i class="icon-user"></i> 정보 수정</a></li>-->
+                {header_login_status_begin}
+                <li><i class="icon-user"></i> {session_u_name} 님</li>
+                <li><a href="/mypage/" data-toggle="modal">마이 페이지</a></li>
+                <li><a href="/login/logout.php" data-toggle="modal">로그아웃</a></li>
+                {header_login_status_end}
+              </ul>
+            </div>
+            <!-- Signup Modal -->
+            <div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="mySignupModalLabel">{site_name} <strong>회원 가입</strong></h4>
+              </div>
+              <div class="modal-body">
+                <!-- 회원 가입 폼 -->
+                <form id="form_user_join" method="post" class="form-horizontal">
+                  <!-- 중복실행 확인 -->
+                  <input type="hidden" id="join_duplication_tag" name="join_duplication_tag" value="N" />
+                  <!-- 중복실행 확인 -->
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_name">이름(한글) (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_name" name="join_u_name" maxlength="50" placeholder="이름(한글)">
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_firstname">First Name(영문) (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_firstname" name="join_u_firstname" maxlength="30" placeholder="First Name(영문)">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_lastname">Last Name(영문) (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_lastname" name="join_u_lastname" maxlength="30" placeholder="Last Name(영문)">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_preferredname">Preferred Name(영문)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_preferredname" name="join_u_preferredname" maxlength="30" placeholder="Preferred Name(영문)">
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_loginid">아이디 (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_loginid" name="join_u_loginid" maxlength="20" placeholder="아이디">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_password">비밀번호 (*)</label>
+                    <div class="controls">
+                      <input type="password" id="join_u_password" name="join_u_password" maxlength="20" placeholder="비밀번호">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_password_confirm">비밀번호 확인 (*)</label>
+                    <div class="controls">
+                      <input type="password" id="join_u_password_confirm" name="join_u_password_confirm" maxlength="20" placeholder="비밀번호 확인">
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_birthdate">생년월일 (*)</label>
+                    <div class="controls">
+                      <select id="join_u_birthdate_year" name="join_u_birthdate_year">{option_join_u_birthdate_year}</select>
+                      <select id="join_u_birthdate_month" name="join_u_birthdate_month">{option_join_u_birthdate_month}</select>
+                      <select id="join_u_birthdate_day" name="join_u_birthdate_day">{option_join_u_birthdate_day}</select>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_email">이메일 (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_email" name="join_u_email" maxlength="50" placeholder="이메일">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_gendertype">성별(Gender) (*)</label>
+                    <div class="controls">
+                      {radio_join_u_gendertype}
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_contryofbirth">출생국가<!--(Country of Birth)--> (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_contryofbirth" name="join_u_contryofbirth" maxlength="30" placeholder="출생국가(Country of Birth)">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_contryofcitizenship">국적<!--(Country of Citizenship)--> (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_contryofcitizenship" name="join_u_contryofcitizenship" maxlength="30" placeholder="국적(Country of Citizenship)">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="join_u_passportnumber">여권번호<!--(Passport Number)--> (*)</label>
+                    <div class="controls">
+                      <input type="text" id="join_u_passportnumber" name="join_u_passportnumber" maxlength="20" placeholder="여권번호(Passport Number)">
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="button" class="btn" id="button_go_join_process">회원 가입</button>
+                    </div>
+                    <p class="aligncenter margintop20">
+                      이미 회원 가입을 하셨습니까? <a href="#mySignin" data-dismiss="modal" aria-hidden="true" data-toggle="modal">로그인</a>
+                    </p>
+                  </div>
+                </form>
+                <!-- 회원 가입 폼 -->
+              </div>
+            </div>
+            <!-- end signup modal -->
+            <!-- Sign in Modal -->
+            <div id="mySignin" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySigninModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="mySigninModalLabel">{site_name} <strong>로그인</strong></h4>
+              </div>
+              <div class="modal-body">
+                <!-- 로그인 폼 -->
+                <form id="form_user_login" method="post" action="/login/login.php" onsubmit="return go_user_login();" class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="inputText">아이디</label>
+                    <div class="controls">
+                      <input type="text" id="u_loginid" name="u_loginid" placeholder="아이디">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="inputSigninPassword">비밀번호</label>
+                    <div class="controls">
+                      <input type="password" id="u_password" name="u_password" placeholder="비밀번호">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">로그인</button>
+                    </div>
+                    <p class="aligncenter margintop20">
+                      Forgot password? <a href="#myReset" data-dismiss="modal" aria-hidden="true" data-toggle="modal">비밀번호 초기화</a>
+                    </p>
+                  </div>
+                </form>
+                <!-- 로그인 폼 -->
+              </div>
+            </div>
+            <!-- end signin modal -->
+            <!-- Reset Modal -->
+            <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="myResetModalLabel">{site_name} <strong>비밀번호 초기화</strong></h4>
+              </div>
+              <div class="modal-body">
+                <!-- 비밀번호 초기화 폼 -->
+                <form id="form_user_password_reset" method="post" class="form-horizontal">
+                  <!-- 중복실행 확인 -->
+                  <input type="hidden" id="reset_duplication_tag" name="reset_duplication_tag" value="N" />
+                  <!-- 중복실행 확인 -->
+                  <div class="control-group">
+                    <label class="control-label" for="reset_u_name">이름(한글) (*)</label>
+                    <div class="controls">
+                      <input type="text" id="reset_u_name" name="reset_u_name" maxlength="50" placeholder="이름(한글)">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="reset_u_email">이메일 (*)</label>
+                    <div class="controls">
+                      <input type="text" id="reset_u_email" name="reset_u_email" maxlength="50" placeholder="이메일">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="button" class="btn" id="button_go_password_reset">비밀번호 초기화</button>
+                    </div>
+                    <p class="aligncenter margintop20">
+                      비밀번호를 초기화 후 등록된 이메일로 보내드리겠습니다.
+                    </p>
+                  </div>
+                </form>
+                <!-- 비밀번호 초기화 폼 -->
+              </div>
+            </div>
+            <!-- end reset modal -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <div class="logo">
+              <a href="/"><img src="/images/logo/KWEDU.png" alt="KW Edu Consulting Logo Image" width="180px" height="50px" class="logo" /></a>
+              <h1>캐나다 워터루 현지 유학원</h1>
+            </div>
+          </div>
+          <div class="span8">
+            <div class="navbar navbar-static-top">
+              <div class="navigation">
+                <nav>
+                  <ul class="nav topnav">
+                    {user_top_menu_list}
+                    <!--
+                    <li class="dropdown active">
+                      <a href="/">Home <i class="icon-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="index-alt2.html">Homepage 2</a></li>
+                        <li><a href="index-alt3.html">Homepage 3</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#">Features <i class="icon-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="typography.html">Typography</a></li>
+                        <li><a href="table.html">Table</a></li>
+                        <li><a href="components.html">Components</a></li>
+                        <li><a href="animations.html">56 Animations</a></li>
+                        <li><a href="icons.html">Icons</a></li>
+                        <li><a href="icon-variations.html">Icon variations</a></li>
+                        <li class="dropdown"><a href="#">3 Sliders <i class="icon-angle-right"></i></a>
+                          <ul class="dropdown-menu sub-menu-level1">
+                            <li><a href="index.html">Nivo slider</a></li>
+                            <li><a href="index-alt2.html">Slit slider</a></li>
+                            <li><a href="index-alt3.html">Parallax slider</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#">Pages <i class="icon-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="pricingbox.html">Pricing boxes</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="404.html">404</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#">Portfolio <i class="icon-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="portfolio-2cols.html">Portfolio 2 columns</a></li>
+                        <li><a href="portfolio-3cols.html">Portfolio 3 columns</a></li>
+                        <li><a href="portfolio-4cols.html">Portfolio 4 columns</a></li>
+                        <li><a href="portfolio-detail.html">Portfolio detail</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#">Blog <i class="icon-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
+                        <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
+                        <li><a href="post-left-sidebar.html">Post left sidebar</a></li>
+                        <li><a href="post-right-sidebar.html">Post right sidebar</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="contact.html">Contact </a>
+                    </li>
+                    -->
+                  </ul>
+                </nav>
+              </div>
+              <!-- end navigation -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->  
+    
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>{menu_name}</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              {user_menu_navigator}
+              <!--
+              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li><a href="#">KW Edu</a><i class="icon-angle-right"></i></li>
+              <li class="active">Home</li>
+              -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    // 회원 가입 버튼 클릭
+    $("#button_go_join_process").on("click", function() {
+        go_join_process();
+    });
+
+    // 비밀번호 초기화 버틑 클릭
+    $("#button_go_password_reset").on("click", function() {
+        go_password_reset();
+    });
+});
+
+// 회원 가입
+function go_join_process() {
+    
+    if ($.trim($("#join_u_name").val()) == "") {
+        alert("이름(한글)을 입력하세요.");
+        $("#join_u_name").focus();
+        return;
+    }
+
+    if ($.trim($("#join_u_firstname").val()) == "") {
+        alert("First Name(영문)을 입력하세요.");
+        $("#join_u_firstname").focus();
+        return;
+    }
+    if ($.trim($("#join_u_lastname").val()) == "") {
+        alert("Last Name(영문)을 입력하세요.");
+        $("#join_u_lastname").focus();
+        return;
+    }
+
+    // 아이디
+    if ($.trim($("#join_u_loginid").val()) == "") {
+        alert("아이디를 입력하세요.");
+        $("#join_u_loginid").focus();
+        return;
+    }
+    if (!check_lowercase_number($.trim($("#join_u_loginid").val()))) {
+        alert("아이디를 영문소문자/숫자로 입력하세요.");
+        $("#join_u_loginid").focus();
+        return;    
+    }
+    if (!check_string_length($.trim($("#join_u_loginid").val()), 2, 20)) {
+        alert("아이디를 2자 이상 20자 이하로 입력하세요.");
+        $("#join_u_loginid").focus();
+        return;    
+    }
+    
+    // 아이디 중복체크
+    $.ajax({   
+        type: "post",
+        async: false,                   // 동기 방식
+        url: "/user/ajax_user_join_u_loginid_duplication_check.php",        
+        data: {
+            u_loginid: $.trim($("#join_u_loginid").val())
+        },       
+        success: function(data) {
+            if (data == "Y") {
+                duplication_tag = "Y";
+            }
+            else {
+                duplication_tag = "N";  
+            }
+        }  
+    }); 
+    
+    if (duplication_tag == "Y") {
+        alert("아이디가 중복되었습니다.");
+        $("#join_u_loginid").focus();
+        return;
+    }
+
+    // 비밀번호    
+    if ($.trim($("#join_u_password").val()) == "") {
+        alert("비밀번호를 입력하세요.");
+        $("#join_u_password").focus();
+        return;
+    }
+    if (!check_string_length($.trim($("#join_u_password").val()), 4, 20)) {
+        alert("비밀번호를 4자 이상 20자 이하로 입력하세요.");
+        $("#join_u_password").focus();
+        return;    
+    }
+    
+    if ($.trim($("#join_u_password_confirm").val()) != $.trim($("#join_u_password").val())) {
+        alert("비밀번호 확인을 비밀번호와 같게 입력하세요.");
+        $("#join_u_password_confirm").focus();
+        return;
+    }
+
+
+    // 생년월일
+    if ($.trim($("#join_u_birthdate_year").val()) == "") {        
+        alert("생년월일(년)을 선택하세요.");
+        $("#join_u_birthdate_year").focus();
+        return;
+    } 
+
+    if ($.trim($("#join_u_birthdate_month").val()) == "") {        
+        alert("생년월일(월)을 선택하세요.");
+        $("#join_u_birthdate_month").focus();
+        return;
+    } 
+
+    if ($.trim($("#join_u_birthdate_day").val()) == "") {        
+        alert("생년월일(일)을 선택하세요.");
+        $("#join_u_birthdate_day").focus();
+        return;
+    }
+
+
+    if ($.trim($("#join_u_email").val()) == "") {
+        alert("이메일을 입력하세요.");
+        $("#join_u_email").focus();
+        return;
+    }
+
+    if ($('input:radio[name="join_u_gendertype"]').is(":checked") == false) {
+        alert("성별을 선택하세요.");
+        $('input:radio[name="join_u_gendertype"]').first().focus();
+        return;
+    }
+
+
+    if ($.trim($("#join_u_contryofbirth").val()) == "") {
+        alert("출생국가(Country of Birth)를 입력하세요.");
+        $("#join_u_contryofbirth").focus();
+        return;
+    }
+
+    if ($.trim($("#join_u_contryofcitizenship").val()) == "") {
+        alert("국적(Country of Citizenship)을 입력하세요.");
+        $("#join_u_contryofcitizenship").focus();
+        return;
+    }
+
+
+    // 여권번호(Passport Number)
+    if ($.trim($("#join_u_passportnumber").val()) == "") {
+        alert("여권번호(Passport Number)를 입력하세요.");
+        $("#join_u_passportnumber").focus();
+        return;
+    }
+    if (!check_uppercase_number($.trim($("#join_u_passportnumber").val()))) {
+        alert("여권번호(Passport Number)를 영문대문자/숫자로 입력하세요.");
+        $("#join_u_passportnumber").focus();
+        return;    
+    }
+    if (!check_string_length($.trim($("#join_u_passportnumber").val()), 8, 9)) {
+        alert("여권번호(Passport Number)를 8자 이상 9자 이하로 입력하세요.");
+        $("#join_u_passportnumber").focus();
+        return;    
+    }
+
+    // 중복실행 확인
+    if ($("#join_duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#join_duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_user_join").attr("target", "_self");
+    $("#form_user_join").attr("method", "post");
+    $("#form_user_join").attr("action", "/user/user_join_process.php");    
+    $("#form_user_join").submit();
+}
+
+// 로그인
+function go_user_login() {
+    // 아이디
+    if ($.trim($("#u_loginid").val()) == "") {
+        alert("아이디를 입력하세요.");
+        $("#u_loginid").focus();
+        return false;
+    }
+
+    // 비밀번호    
+    if ($.trim($("#u_password").val()) == "") {
+        alert("비밀번호를 입력하세요.");
+        $("#u_password").focus();
+        return false;
+    }
+
+    return true;
+}
+
+// 비밀번호 초기화
+function go_password_reset() {
+
+    if ($.trim($("#reset_u_name").val()) == "") {
+        alert("이름(한글)을 입력하세요.");
+        $("#reset_u_name").focus();
+        return;
+    }
+
+    if ($.trim($("#reset_u_email").val()) == "") {
+        alert("이메일을 입력하세요.");
+        $("#reset_u_email").focus();
+        return;
+    }
+
+    // 이메일 존재여부 체크
+    $.ajax({   
+        type: "post",
+        async: false,                   // 동기 방식
+        url: "/user/ajax_user_u_email_exist_check.php",        
+        data: {
+            u_name: $.trim($("#reset_u_name").val()),
+            u_email: $.trim($("#reset_u_email").val())
+        },       
+        success: function(data) {
+            if (data == "Y") {
+                exist_tag = "Y";
+            }
+            else {
+                exist_tag = "N";  
+            }
+        }  
+    });
+
+    if (exist_tag != "Y") {
+        alert("해당 이름/이메일이 존재하지 않습니다.");
+        $("#reset_u_email").focus();
+        return;
+    }
+
+    // 중복실행 확인
+    if ($("#reset_duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#reset_duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_user_password_reset").attr("target", "_self");
+    $("#form_user_password_reset").attr("method", "post");
+    $("#form_user_password_reset").attr("action", "/login/password_reset.php");    
+    $("#form_user_password_reset").submit();
+
+}
+
+</script>

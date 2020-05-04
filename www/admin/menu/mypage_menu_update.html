@@ -1,0 +1,266 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="search_m_id_1" name="search_m_id_1" value="{search_m_id_1}">
+<input type="hidden" id="search_m_usestate" name="search_m_usestate" value="{search_m_usestate}">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="m_id" name="m_id" value="{m_id}">
+<input type="hidden" id="m_step" name="m_step" value="{m_step}"><!-- 메뉴단계 -->
+<!-- 중복실행 확인 -->
+<input type="hidden" id="duplication_tag" name="duplication_tag" value="N" />
+<!-- 중복실행 확인 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">메뉴</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">메뉴단계</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_step_text}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">상위메뉴</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control input-sm" id="m_parentid_1" name="m_parentid_1">{option_m_parentid_1}</select>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control input-sm" id="m_parentid_2" name="m_parentid_2">{option_m_parentid_2}</select>                    
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">메뉴명</span></label></span>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control input-sm" id="m_name" name="m_name" value="{m_name}" maxlength="50" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">메뉴URL</span></label></span>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control input-sm" id="m_url" name="m_url" value="{m_url}" maxlength="100" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    {radio_m_usestate}
+                </div>
+            </div>
+            <!--
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">순서</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_order}
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <input type="button" class="btn btn-primary" id="button_go_update_process" value="수정완료" />
+        </div>
+        <div class="col-md-4 text-right">
+            <input type="button" class="btn btn-danger" id="button_go_delete_process" value="삭제하기" />
+        </div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    // 페이지 로드시 포커스
+    $("#m_name").focus();
+    
+    // 상위메뉴, 메뉴URL 안보이도록 처리
+    $("#m_parentid_1").hide();
+    $("#m_parentid_2").hide();
+    $("#m_url").hide();
+
+    if ($.trim($("#m_step").val()) == "1") {                // 대메뉴
+        
+    }
+    else if ($.trim($("#m_step").val()) == "2") {           // 중메뉴
+        $("#m_parentid_1").show();    
+    }
+    else if ($.trim($("#m_step").val()) == "3") {           // 소메뉴
+        $("#m_parentid_1").show();
+        $("#m_parentid_2").show();
+        $("#m_url").show();
+    }
+    
+    // 상위메뉴(대메뉴) 변경시
+    $('select[name="m_parentid_1"]').on("change", function() {
+        // 상위메뉴(중메뉴) 표시
+        set_option_m_parentid_2();    
+    });
+    
+    // 수정완료 버튼 클릭
+    $("#button_go_update_process").on("click", function() {
+        go_update_process();
+    });
+    
+    // 삭제하기 버튼 클릭
+    $("#button_go_delete_process").on("click", function() {
+        go_delete_process();
+    });      
+});
+
+// 상위메뉴(중메뉴)
+function set_option_m_parentid_2() {
+    // 초기화
+    $('select[name="m_parentid_2"]').val("");
+    $('select[name="m_parentid_2"] option').remove();    
+    $('select[name="m_parentid_2"]').append('<option value="">--선택--</option>');
+    
+    $.ajax({   
+        type: "post",
+        async: false,                   // 동기 방식
+        url: "ajax_set_option_mypage_m_parentid_2.php",        
+        data: {
+            m_parentid_1: $.trim($("#m_parentid_1").val())
+        },       
+        success: function(data) {             
+            var data_list = $.parseJSON(data);
+            var text_array;
+            
+            $.each(data_list, function(key, value) {
+                text_array = data_list[key].split("||");
+                
+                // $('select[name="m_parentid_2"]').append('<option value="' + key + '">' + data_list[key] + '</option>');
+                $('select[name="m_parentid_2"]').append('<option value="' + text_array[0] + '">' + text_array[1] + '</option>');
+            });
+        }
+    });
+}
+    
+// 수정완료
+function go_update_process() {            
+    if ($.trim($("#m_step").val()) == "2") {                // 중메뉴
+        if ($.trim($("#m_parentid_1").val()) == "") {        
+            alert("상위메뉴(대메뉴)를 선택하세요.");
+            $("#m_parentid_1").focus();
+            return;
+        }    
+    }
+    if ($.trim($("#m_step").val()) == "3") {                // 소메뉴
+        if ($.trim($("#m_parentid_1").val()) == "") {        
+            alert("상위메뉴(대메뉴)를 선택하세요.");
+            $("#m_parentid_1").focus();
+            return;
+        }
+        
+        if ($.trim($("#m_parentid_2").val()) == "") {        
+            alert("상위메뉴(중메뉴)를 선택하세요.");
+            $("#m_parentid_2").focus();
+            return;
+        }    
+    }
+    
+    if ($.trim($("#m_name").val()) == "") {
+        alert("메뉴명을 입력하세요.");
+        $("#m_name").focus();
+        return;
+    }
+    
+    // 메뉴명 중복체크
+    $.ajax({   
+        type: "post",
+        async: false,                   // 동기 방식
+        url: "ajax_mypage_menu_m_name_duplication_check.php",        
+        data: {
+            m_id: $.trim($("#m_id").val()),
+            m_step: $.trim($("#m_step").val()),
+            m_parentid_1: $.trim($("#m_parentid_1").val()),
+            m_parentid_2: $.trim($("#m_parentid_2").val()),
+            m_name: $.trim($("#m_name").val())
+        },       
+        success: function(data) {
+            if (data == "Y") {
+                duplication_tag = "Y";
+            }
+            else {
+                duplication_tag = "N";  
+            }
+        }  
+    }); 
+    
+    if (duplication_tag == "Y") {
+        alert("메뉴명이 중복되었습니다.");
+        $("#m_name").focus();
+        return;
+    }
+    
+    if ($.trim($("#m_step").val()) == "3") {                // 소메뉴
+        if ($.trim($("#m_url").val()) == "") {
+            alert("메뉴URL을 입력하세요.");
+            $("#m_url").focus();
+            return;
+        }
+    }
+    
+    if ($('input:radio[name="m_usestate"]').is(":checked") == false) {
+        alert("사용상태를 선택하세요.");
+        $('input:radio[name="m_usestate"]').first().focus();
+        return;
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "mypage_menu_update_process.php");    
+    $("#form_main").submit();
+}
+
+// 삭제하기
+function go_delete_process() {        
+    if (!confirm("삭제하시겠습니까?")) {
+        return;
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "mypage_menu_delete_process.php");    
+    $("#form_main").submit();
+}
+
+</script>

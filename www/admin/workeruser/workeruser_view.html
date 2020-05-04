@@ -1,0 +1,497 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="search_wu_approvalstate" name="search_wu_approvalstate" value="{search_wu_approvalstate}">
+<input type="hidden" id="search_wu_usestate" name="search_wu_usestate" value="{search_wu_usestate}">
+<input type="hidden" id="search_type" name="search_type" value="{search_type}">
+<input type="hidden" id="search_keyword" name="search_keyword" value="{search_keyword}">
+<input type="hidden" id="page" name="page" value="{page}">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="wu_id" name="wu_id" value="{wu_id}" /><!-- 담당자번호 -->
+<input type="hidden" id="wu_approvalstate" name="wu_approvalstate" value="" /><!-- 승인상태 -->
+<input type="hidden" id="wu_usestate" name="wu_usestate" value="" /><!-- 사용상태 -->
+<input type="hidden" id="if_id" name="if_id" value="" /><!-- 이미지파일번호 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">담당자</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이름(한글)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_name}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">First Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_firstname}
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Last Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_lastname}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Preferred Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_preferredname}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">아이디</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    {wu_loginid}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이메일</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_email}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">생년월일</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_birthdate}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">성별(Gender)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span style="color:{color_wu_gendertype}">{wu_gendertype}</span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">출생국가(Country of Birth)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_contryofbirth}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">국적(Country of Citizenship)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_contryofcitizenship}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">여권번호(Passport Number)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_passportnumber}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">SIN넘버(SIN Number)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_sinnumber}
+                </div>
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Street Address</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_streetaddress}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Apartment Number</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_unitnumber}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">City</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_city}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Province</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_province}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Country</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_country}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Postal/Zip Code</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_postalcode}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">추가이메일</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_additionalemail}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">휴대폰</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    +{wu_mobilecountry}-{wu_mobile1}-{wu_mobile2}-{wu_mobile3}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">집전화</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    +{wu_homephonecountry}-{wu_homephone1}-{wu_homephone2}-{wu_homephone3}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">기타전화</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    +{wu_additionalphonecountry}-{wu_additionalphone1}-{wu_additionalphone2}-{wu_additionalphone3} ({wu_additionalphoneextension})
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">긴급연락처 이름</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_emergencyname}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">긴급연락처 관계</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_emergencyrelationship}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">긴급연락처</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    +{wu_emergencyphonecountry}-{wu_emergencyphone1}-{wu_emergencyphone2}-{wu_emergencyphone3} ({wu_emergencyphoneextension})
+                </div>
+            </div>
+
+
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 Maker</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_vehiclemaker}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 Model</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_vehiclemodel}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 년도</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_vehicleyear}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 주행거리</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_vehiclemileage} km
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 등록번호</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_vehicleplatenumber}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 보험회사</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_autoinsurancecompany}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 보험증번호</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_autoinsurancenumber}
+                </div>
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">승인상태</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span style="color:{color_wu_approvalstate}">{wu_approvalstate}</span>
+                    &nbsp;&nbsp;&nbsp;
+                    {button_wu_approvalstate_change}
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span style="color:{color_wu_usestate}">{wu_usestate}</span>
+                    &nbsp;&nbsp;&nbsp;
+                    {button_wu_usestate_change}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">로그인일시</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_logindatetime}
+                </div>
+            </div>      
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center"></div>
+        <div class="col-md-4 text-right"></div> 
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+    <!-- 이미지 파일 시작 -->
+    <div class="panel panel-success">
+        <div class="panel-heading">이미지</div>
+        <div class="panel-body"> 
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">여권 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_passportimagefile}">
+                        {wu_passportimagefile_image}<br /><br />
+                        {wu_passportimagefile_download}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">본인 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_photoimagefile}">
+                        {wu_photoimagefile_image}<br /><br />
+                        {wu_photoimagefile_download}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">범죄경력증명서 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_criminalrecordimagefile}">
+                        {wu_criminalrecordimagefile_image}<br /><br />
+                        {wu_criminalrecordimagefile_download}
+                    </span>
+                </div>                
+            </div>  
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 앞면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_vehiclefrontimagefile}">
+                        {wu_vehiclefrontimagefile_image}<br /><br />
+                        {wu_vehiclefrontimagefile_download}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 뒷면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_vehiclebackimagefile}">
+                        {wu_vehiclebackimagefile_image}<br /><br />
+                        {wu_vehiclebackimagefile_download}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">운전면허증 앞면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_driverlicencefrontimagefile}">
+                        {wu_driverlicencefrontimagefile_image}<br /><br />
+                        {wu_driverlicencefrontimagefile_download}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">운전면허증 뒷면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_driverlicencebackimagefile}">
+                        {wu_driverlicencebackimagefile_image}<br /><br />
+                        {wu_driverlicencebackimagefile_download}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 오너쉽 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_vehicleownershipimagefile}">
+                        {wu_vehicleownershipimagefile_image}<br /><br />
+                        {wu_vehicleownershipimagefile_download}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 보험증 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span id="span_imagefile_{wu_vehicleinsuranceimagefile}">
+                        {wu_vehicleinsuranceimagefile_image}<br /><br />
+                        {wu_vehicleinsuranceimagefile_download}
+                    </span>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <!-- 이미지 파일 끝 -->
+    
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center"></div>
+        <div class="col-md-4 text-right"></div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    
+});
+
+// 승인상태 변경
+function workeruser_approvalstate_change(wu_approvalstate) { 
+    var wu_approvalstate_text = "";
+
+    if (wu_approvalstate == "1") {
+        wu_approvalstate_text = "미승인";
+    }
+    else if (wu_approvalstate == "2") {
+        wu_approvalstate_text = "승인완료";
+    }
+
+    if (!confirm("승인상태를 '" + wu_approvalstate_text + "'(으)로 변경하시겠습니까?")) {
+        return;
+    }
+
+    $("#wu_approvalstate").val(wu_approvalstate);
+
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "workeruser_approvalstate_change.php");    
+    $("#form_main").submit();
+}
+
+// 사용상태 변경
+function workeruser_usestate_change(wu_usestate) { 
+    var wu_usestate_text = "";
+
+    if (wu_usestate == "1") {
+        wu_usestate_text = "사용";
+    }
+    else if (wu_usestate == "2") {
+        wu_usestate_text = "중지";
+    }
+
+    if (!confirm("사용상태를 '" + wu_usestate_text + "'(으)로 변경하시겠습니까?")) {
+        return;
+    }
+
+    $("#wu_usestate").val(wu_usestate);
+
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "workeruser_usestate_change.php");    
+    $("#form_main").submit();
+}
+
+// 이미지 다운로드
+function download_imagefile(if_id) { 
+    if (!confirm("이미지파일를 다운로드하시겠습니까?")) {
+        return;
+    }
+
+    $("#if_id").val(if_id);
+
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "/common/imagefile/download_imagefile.php");    
+    $("#form_main").submit();
+}
+
+</script>

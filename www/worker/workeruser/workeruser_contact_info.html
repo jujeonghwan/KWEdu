@@ -1,0 +1,514 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="if_id" name="if_id" value="" /><!-- 이미지파일번호 -->
+<!-- 중복실행 확인 -->
+<input type="hidden" id="duplication_tag" name="duplication_tag" value="N" />
+<!-- 중복실행 확인 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">연락처 정보 (Contact Information)</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이름(한글)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_name}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">First Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_firstname}
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Last Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_lastname}
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Street Address</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_streetaddress" name="wu_streetaddress" value="{wu_streetaddress}" maxlength="30" />
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Apartment Number</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_unitnumber" name="wu_unitnumber" value="{wu_unitnumber}" maxlength="20" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">City</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_city" name="wu_city" value="{wu_city}" maxlength="20" />
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Province</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_province" name="wu_province" value="{wu_province}" maxlength="20" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Country</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_country" name="wu_country" value="{wu_country}" maxlength="20" />
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Postal/Zip Code</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_postalcode" name="wu_postalcode" value="{wu_postalcode}" maxlength="10" />
+                </div>
+                <div class="col-md-2">
+                    ex) N2L0G8
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">추가이메일</span></label></span>
+                </div>
+                <div class="col-md-3">
+                    <input type="email" class="form-control input-sm" id="wu_additionalemail" name="wu_additionalemail" value="{wu_additionalemail}" maxlength="50" />
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">휴대폰</span></label></span>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_mobilecountry" name="wu_mobilecountry" value="{wu_mobilecountry}" maxlength="6" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_mobile1" name="wu_mobile1" value="{wu_mobile1}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_mobile2" name="wu_mobile2" value="{wu_mobile2}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_mobile3" name="wu_mobile3" value="{wu_mobile3}" maxlength="4" />
+                </div>
+                <div class="col-md-2">
+                    ex) 1 226 123 4567
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">집전화</span></label></span>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_homephonecountry" name="wu_homephonecountry" value="{wu_homephonecountry}" maxlength="6" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_homephone1" name="wu_homephone1" value="{wu_homephone1}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_homephone2" name="wu_homephone2" value="{wu_homephone2}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_homephone3" name="wu_homephone3" value="{wu_homephone3}" maxlength="4" />
+                </div>
+                <div class="col-md-2">
+                    ex) 1 519 123 4567
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">기타전화</span></label></span>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_additionalphonecountry" name="wu_additionalphonecountry" value="{wu_additionalphonecountry}" maxlength="6" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_additionalphone1" name="wu_additionalphone1" value="{wu_additionalphone1}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_additionalphone2" name="wu_additionalphone2" value="{wu_additionalphone2}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_additionalphone3" name="wu_additionalphone3" value="{wu_additionalphone3}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <span class="col-md-12 text-right">Extension</span>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_additionalphoneextension" name="wu_additionalphoneextension" value="{wu_additionalphoneextension}" maxlength="4" />
+                </div>
+                <div class="col-md-3">
+                    ex) 82 2 123 4567 (7890)
+                </div>
+            </div>
+
+            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">긴급연락처 이름</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyname" name="wu_emergencyname" value="{wu_emergencyname}" maxlength="50" />
+                </div>
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">긴급연락처 관계</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyrelationship" name="wu_emergencyrelationship" value="{wu_emergencyrelationship}" maxlength="20" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">긴급연락처</span></label></span>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyphonecountry" name="wu_emergencyphonecountry" value="{wu_emergencyphonecountry}" maxlength="6" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyphone1" name="wu_emergencyphone1" value="{wu_emergencyphone1}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyphone2" name="wu_emergencyphone2" value="{wu_emergencyphone2}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyphone3" name="wu_emergencyphone3" value="{wu_emergencyphone3}" maxlength="4" />
+                </div>
+                <div class="col-md-1">
+                    <span class="col-md-12 text-right">Extension</span>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-sm" id="wu_emergencyphoneextension" name="wu_emergencyphoneextension" value="{wu_emergencyphoneextension}" maxlength="4" />
+                </div>
+                <div class="col-md-3">
+                    ex) 1 519 123 4567 (7890)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이미지 파일 시작 -->
+    <div class="panel panel-success">
+        <div class="panel-heading">개인 관련 이미지</div>
+        <div class="panel-body">   
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">여권 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_passportimagefile" name="wu_passportimagefile" /><br />
+                    <span id="span_imagefile_{wu_passportimagefile}">
+                        {wu_passportimagefile_image}<br /><br />
+                        {wu_passportimagefile_download}
+                        {wu_passportimagefile_delete}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">본인 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_photoimagefile" name="wu_photoimagefile" /><br />
+                    <span id="span_imagefile_{wu_photoimagefile}">
+                        {wu_photoimagefile_image}<br /><br />
+                        {wu_photoimagefile_download}
+                        {wu_photoimagefile_delete}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">범죄경력증명서 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_criminalrecordimagefile" name="wu_criminalrecordimagefile" /><br />
+                    <span id="span_imagefile_{wu_criminalrecordimagefile}">
+                        {wu_criminalrecordimagefile_image}<br /><br />
+                        {wu_criminalrecordimagefile_download}
+                        {wu_criminalrecordimagefile_delete}
+                    </span>
+                </div>
+                
+            </div>            
+        </div>
+    </div>
+    <!-- 이미지 파일 끝 -->
+    
+    <div class="row">
+        <div class="col-md-4 text-left">            
+        </div>
+        <div class="col-md-4 text-center">
+            <input type="button" class="btn btn-primary" id="button_go_info_process" value="수정완료" />
+        </div>
+        <div class="col-md-4 text-right">
+        </div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    // 페이지 로드시 포커스
+    $("#wu_streetaddress").focus();   
+    
+    // 수정완료 버튼 클릭
+    $("#button_go_info_process").on("click", function() {
+        go_info_process();
+    });      
+});
+
+// 이미지 다운로드
+function download_imagefile(if_id) { 
+    if (!confirm("이미지파일를 다운로드하시겠습니까?")) {
+        return;
+    }
+
+    $("#if_id").val(if_id);
+
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "/common/imagefile/download_imagefile.php");    
+    $("#form_main").submit();
+}
+
+// 이미지 삭제하기
+function delete_imagefile(if_id) { 
+    if (!confirm("이미지파일을 삭제하시겠습니까?")) {
+        return;
+    }
+     
+    $.ajax({
+        type: "post",
+        async: false,               // 동기방식
+        url: "/common/imagefile/ajax_delete_imagefile.php",
+        data: {
+            if_id: if_id
+        },
+        success: function(data) {
+            if (data == "Y") {
+                check_tag = "Y";
+            }
+            else {
+                check_tag = "N";
+            }
+        }
+    });
+
+    if (check_tag == "Y") {
+        alert("이미지파일이 삭제되었습니다.");
+        $("#span_imagefile_" + if_id).html("이미지파일이 삭제되었습니다.");            
+    }
+    else {
+        alert("이미지파일을 삭제하는데 실패했습니다.");
+    }    
+}
+
+// 수정완료
+function go_info_process() { 
+    if ($.trim($("#wu_streetaddress").val()) == "") {
+        alert("Street Address를 입력하세요.");
+        $("#wu_streetaddress").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_city").val()) == "") {
+        alert("City를 입력하세요.");
+        $("#wu_city").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_province").val()) == "") {
+        alert("Province를 입력하세요.");
+        $("#wu_province").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_country").val()) == "") {
+        alert("Country를 입력하세요.");
+        $("#wu_country").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_postalcode").val()) == "") {
+        alert("Postal/Zip Code를 입력하세요.");
+        $("#wu_postalcode").focus();
+        return;
+    }
+    if (!check_uppercase_number($.trim($("#wu_postalcode").val()))) {
+        alert("Postal/Zip Code를 영문대문자/숫자로 입력하세요.");
+        $("#wu_postalcode").focus();
+        return;    
+    }
+
+    // 휴대폰
+    if ($.trim($("#wu_mobilecountry").val()) == "") {
+        alert("휴대폰 국가번호를 입력하세요.");
+        $("#wu_mobilecountry").focus();
+        return;
+    }
+    if (!check_number($.trim($("#wu_mobilecountry").val()))) {
+        alert("휴대폰 국가번호를 숫자로 입력하세요.");
+        $("#wu_mobilecountry").focus();
+        return;    
+    }
+
+    if ($.trim($("#wu_mobile1").val()) == "") {
+        alert("휴대폰 번호를 입력하세요.");
+        $("#wu_mobile1").focus();
+        return;
+    }
+    if (!check_number($.trim($("#wu_mobile1").val()))) {
+        alert("휴대폰 번호를 숫자로 입력하세요.");
+        $("#wu_mobile1").focus();
+        return;    
+    }
+
+    if ($.trim($("#wu_mobile2").val()) == "") {
+        alert("휴대폰 번호를 입력하세요.");
+        $("#wu_mobile2").focus();
+        return;
+    }
+    if (!check_number($.trim($("#wu_mobile2").val()))) {
+        alert("휴대폰 번호를 숫자로 입력하세요.");
+        $("#wu_mobile2").focus();
+        return;    
+    }
+
+    if ($.trim($("#wu_mobile3").val()) == "") {
+        alert("휴대폰 번호를 입력하세요.");
+        $("#wu_mobile3").focus();
+        return;
+    }
+    if (!check_number($.trim($("#wu_mobile3").val()))) {
+        alert("휴대폰 번호를 숫자로 입력하세요.");
+        $("#wu_mobile3").focus();
+        return;    
+    }
+
+    // 집전화
+    if (!check_number($.trim($("#wu_homephonecountry").val()))) {
+        alert("집전화 국가번호를 숫자로 입력하세요.");
+        $("#wu_homephonecountry").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_homephone1").val()))) {
+        alert("집전화 번호를 숫자로 입력하세요.");
+        $("#wu_homephone1").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_homephone2").val()))) {
+        alert("집전화 번호를 숫자로 입력하세요.");
+        $("#wu_homephone2").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_homephone3").val()))) {
+        alert("집전화 번호를 숫자로 입력하세요.");
+        $("#wu_homephone3").focus();
+        return;    
+    }
+
+    // 기타전화
+    if (!check_number($.trim($("#wu_additionalphonecountry").val()))) {
+        alert("기타전화 국가번호를 숫자로 입력하세요.");
+        $("#wu_additionalphonecountry").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_additionalphone1").val()))) {
+        alert("기타전화 번호를 숫자로 입력하세요.");
+        $("#wu_additionalphone1").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_additionalphone2").val()))) {
+        alert("기타전화 번호를 숫자로 입력하세요.");
+        $("#wu_additionalphone2").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_additionalphone3").val()))) {
+        alert("기타전화 번호를 숫자로 입력하세요.");
+        $("#wu_additionalphone3").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_additionalphoneextension").val()))) {
+        alert("기타전화 Extension 번호를 숫자로 입력하세요.");
+        $("#wu_additionalphoneextension").focus();
+        return;    
+    }
+
+    // 긴급연락처
+    if (!check_number($.trim($("#wu_emergencyphonecountry").val()))) {
+        alert("긴급연락처 국가번호를 숫자로 입력하세요.");
+        $("#wu_emergencyphonecountry").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_emergencyphone1").val()))) {
+        alert("긴급연락처 번호를 숫자로 입력하세요.");
+        $("#wu_emergencyphone1").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_emergencyphone2").val()))) {
+        alert("긴급연락처 번호를 숫자로 입력하세요.");
+        $("#wu_emergencyphone2").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_emergencyphone3").val()))) {
+        alert("긴급연락처 번호를 숫자로 입력하세요.");
+        $("#wu_emergencyphone3").focus();
+        return;    
+    }
+
+    if (!check_number($.trim($("#wu_emergencyphoneextension").val()))) {
+        alert("긴급연락처 Extension 번호를 숫자로 입력하세요.");
+        $("#wu_emergencyphoneextension").focus();
+        return;    
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "workeruser_contact_info_process.php");    
+    $("#form_main").submit();
+}
+
+</script>

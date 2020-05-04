@@ -1,0 +1,353 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="if_id" name="if_id" value="" /><!-- 이미지파일번호 -->
+<!-- 중복실행 확인 -->
+<input type="hidden" id="duplication_tag" name="duplication_tag" value="N" />
+<!-- 중복실행 확인 -->
+        
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">차량 정보 (Vehicle Information)</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">이름(한글)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_name}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">First Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_firstname}
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">Last Name(영문)</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {wu_lastname}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 Maker</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_vehiclemaker" name="wu_vehiclemaker" value="{wu_vehiclemaker}" maxlength="20" />
+                </div>
+                <div class="col-md-2">
+                    ex) Honda
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 Model</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_vehiclemodel" name="wu_vehiclemodel" value="{wu_vehiclemodel}" maxlength="30" />
+                </div>
+                <div class="col-md-2">
+                    ex) Odyssey
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 년도</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control input-sm" id="wu_vehicleyear" name="wu_vehicleyear">{option_wu_vehicleyear}</select>
+                </div>
+                <div class="col-md-2">
+                    ex) 2018
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 주행거리</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_vehiclemileage" name="wu_vehiclemileage" value="{wu_vehiclemileage}" maxlength="6" />
+                </div>
+                <div class="col-md-2">
+                    km
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 등록번호</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_vehicleplatenumber" name="wu_vehicleplatenumber" value="{wu_vehicleplatenumber}" maxlength="30" />
+                </div>
+                <div class="col-md-2">
+                    ex) WXYZ890
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 보험회사</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_autoinsurancecompany" name="wu_autoinsurancecompany" value="{wu_autoinsurancecompany}" maxlength="30" />
+                </div>
+                <div class="col-md-2">
+                    ex) Co-operators
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 보험증번호</span></label></span>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm" id="wu_autoinsurancenumber" name="wu_autoinsurancenumber" value="{wu_autoinsurancenumber}" maxlength="30" />
+                </div>
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이미지 파일 시작 -->
+    <div class="panel panel-success">
+        <div class="panel-heading">자동차 관련 이미지</div>
+        <div class="panel-body">            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 앞면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_vehiclefrontimagefile" name="wu_vehiclefrontimagefile" /><br />
+                    <span id="span_imagefile_{wu_vehiclefrontimagefile}">
+                        {wu_vehiclefrontimagefile_image}<br /><br />
+                        {wu_vehiclefrontimagefile_download}
+                        {wu_vehiclefrontimagefile_delete}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 뒷면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_vehiclebackimagefile" name="wu_vehiclebackimagefile" /><br />
+                    <span id="span_imagefile_{wu_vehiclebackimagefile}">
+                        {wu_vehiclebackimagefile_image}<br /><br />
+                        {wu_vehiclebackimagefile_download}
+                        {wu_vehiclebackimagefile_delete}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">운전면허증 앞면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_driverlicencefrontimagefile" name="wu_driverlicencefrontimagefile" /><br />
+                    <span id="span_imagefile_{wu_driverlicencefrontimagefile}">
+                        {wu_driverlicencefrontimagefile_image}<br /><br />
+                        {wu_driverlicencefrontimagefile_download}
+                        {wu_driverlicencefrontimagefile_delete}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">운전면허증 뒷면 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_driverlicencebackimagefile" name="wu_driverlicencebackimagefile" /><br />
+                    <span id="span_imagefile_{wu_driverlicencebackimagefile}">
+                        {wu_driverlicencebackimagefile_image}<br /><br />
+                        {wu_driverlicencebackimagefile_download}
+                        {wu_driverlicencebackimagefile_delete}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 오너쉽 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_vehicleownershipimagefile" name="wu_vehicleownershipimagefile" /><br />
+                    <span id="span_imagefile_{wu_vehicleownershipimagefile}">
+                        {wu_vehicleownershipimagefile_image}<br /><br />
+                        {wu_vehicleownershipimagefile_download}
+                        {wu_vehicleownershipimagefile_delete}
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">자동차 보험증 사진</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <input type="file" class="form-control input-sm" id="wu_vehicleinsuranceimagefile" name="wu_vehicleinsuranceimagefile" /><br />
+                    <span id="span_imagefile_{wu_vehicleinsuranceimagefile}">
+                        {wu_vehicleinsuranceimagefile_image}<br /><br />
+                        {wu_vehicleinsuranceimagefile_download}
+                        {wu_vehicleinsuranceimagefile_delete}
+                    </span>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <!-- 이미지 파일 끝 -->
+    
+    <div class="row">
+        <div class="col-md-4 text-left">            
+        </div>
+        <div class="col-md-4 text-center">
+            <input type="button" class="btn btn-primary" id="button_go_info_process" value="수정완료" />
+        </div>
+        <div class="col-md-4 text-right">
+        </div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    // 페이지 로드시 포커스
+    $("#wu_vehiclemaker").focus();   
+    
+    // 수정완료 버튼 클릭
+    $("#button_go_info_process").on("click", function() {
+        go_info_process();
+    });      
+});
+
+// 이미지 다운로드
+function download_imagefile(if_id) { 
+    if (!confirm("이미지파일를 다운로드하시겠습니까?")) {
+        return;
+    }
+
+    $("#if_id").val(if_id);
+
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "/common/imagefile/download_imagefile.php");    
+    $("#form_main").submit();
+}
+
+// 이미지 삭제하기
+function delete_imagefile(if_id) { 
+    if (!confirm("이미지파일을 삭제하시겠습니까?")) {
+        return;
+    }
+     
+    $.ajax({
+        type: "post",
+        async: false,               // 동기방식
+        url: "/common/imagefile/ajax_delete_imagefile.php",
+        data: {
+            if_id: if_id
+        },
+        success: function(data) {
+            if (data == "Y") {
+                check_tag = "Y";
+            }
+            else {
+                check_tag = "N";
+            }
+        }
+    });
+
+    if (check_tag == "Y") {
+        alert("이미지파일이 삭제되었습니다.");
+        $("#span_imagefile_" + if_id).html("이미지파일이 삭제되었습니다.");            
+    }
+    else {
+        alert("이미지파일을 삭제하는데 실패했습니다.");
+    }    
+}
+ 
+// 수정완료
+function go_info_process() { 
+    if ($.trim($("#wu_vehiclemaker").val()) == "") {
+        alert("자동차 Maker를 입력하세요.");
+        $("#wu_vehiclemaker").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_vehiclemodel").val()) == "") {
+        alert("자동차 Model을 입력하세요.");
+        $("#wu_vehiclemodel").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_vehicleyear").val()) == "") {        
+        alert("자동차 년도를 선택하세요.");
+        $("#wu_vehicleyear").focus();
+        return;
+    } 
+
+    // 자동차 주행거리
+    if ($.trim($("#wu_vehiclemileage").val()) == "") {
+        alert("자동차 주행거리를 입력하세요.");
+        $("#wu_vehiclemileage").focus();
+        return;
+    }
+    if (!check_number($.trim($("#wu_vehiclemileage").val()))) {
+        alert("자동차 주행거리를 숫자로 입력하세요.");
+        $("#wu_vehiclemileage").focus();
+        return;    
+    }
+
+    // 자동차 등록번호
+    if ($.trim($("#wu_vehicleplatenumber").val()) == "") {
+        alert("자동차 등록번호를 입력하세요.");
+        $("#wu_vehicleplatenumber").focus();
+        return;
+    }
+    if (!check_uppercase_number($.trim($("#wu_vehicleplatenumber").val()))) {
+        alert("자동차 등록번호를 영문대문자/숫자로 입력하세요.");
+        $("#wu_vehicleplatenumber").focus();
+        return;    
+    }
+
+    if ($.trim($("#wu_autoinsurancecompany").val()) == "") {
+        alert("자동차 보험회사를 입력하세요.");
+        $("#wu_autoinsurancecompany").focus();
+        return;
+    }
+
+    if ($.trim($("#wu_autoinsurancenumber").val()) == "") {
+        alert("자동차 보험증번호를 입력하세요.");
+        $("#wu_autoinsurancenumber").focus();
+        return;
+    }
+    if (!check_uppercase_number($.trim($("#wu_autoinsurancenumber").val()))) {
+        alert("자동차 등록번호를 영문대문자/숫자로 입력하세요.");
+        $("#wu_autoinsurancenumber").focus();
+        return;    
+    }
+    
+    // 중복실행 확인
+    if ($("#duplication_tag").val() == "Y") {
+        alert("이미 처리중입니다.");        
+        return;
+    }    
+    $("#duplication_tag").val("Y");
+    
+    // form submit
+    $("#form_main").attr("target", "_self");
+    $("#form_main").attr("method", "post");
+    $("#form_main").attr("action", "workeruser_vehicle_info_process.php");    
+    $("#form_main").submit();
+}
+
+</script>

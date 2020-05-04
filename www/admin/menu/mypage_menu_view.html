@@ -1,0 +1,89 @@
+<form id="form_main" method="post" enctype="multipart/form-data">
+<!-- 목록 페이지 관련 -->
+<input type="hidden" id="search_m_id_1" name="search_m_id_1" value="{search_m_id_1}">
+<input type="hidden" id="search_m_usestate" name="search_m_usestate" value="{search_m_usestate}">
+<!-- 목록 페이지 관련 -->
+                   
+<div class="container">
+        
+    <ol class="breadcrumb">
+        {menu_navigator}
+    </ol>
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">메뉴</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">메뉴단계</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_step}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">상위메뉴</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_parentid_name_list}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">메뉴명</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_name}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">메뉴URL</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_url}
+                </div>
+            </div>            
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">사용상태</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    <span style="color:{color_m_usestate}">{m_usestate}</span>
+                </div>
+            </div>
+            <!--
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <span class="col-md-12 badge"><label class="control-label">순서</span></label></span>
+                </div>
+                <div class="col-md-4">
+                    {m_order}
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <a class="btn btn-info" href="{list_link_href}" role="button">목록보기</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a class="btn btn-primary" href="{update_link_href}" role="button">수정하기</a>
+        </div>
+        <div class="col-md-4 text-right"></div> 
+    </div>
+    
+</div><!-- /container -->
+
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    
+});
+
+</script>
